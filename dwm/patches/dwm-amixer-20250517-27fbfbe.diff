@@ -1,0 +1,27 @@
+diff --git a/config.def.h b/config.def.h
+index 9efa774..b9d1458 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -60,6 +60,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn()
+ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+ static const char *termcmd[]  = { "st", NULL };
+ 
++/* sound patch */
++static const char *volup[] = { "amixer", "set", "Master", "5%+", NULL };                                                                                                                      
++static const char *voldown[] = { "amixer", "set", "Master", "5%-", NULL };                                                                                                                    
++static const char *volmute[] = { "amixer"f, "set", "Master", "toggle", NULL };
++
++/* keybinds */
+ static const Key keys[] = {
+ 	/* modifier                     key        function        argument */
+ 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+@@ -85,6 +91,9 @@ static const Key keys[] = {
+ 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+ 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
++	{ MODKEY|ShiftMask,		XK_Right,  spawn,	   {.v = volup } },
++	{ MODKEY|ShiftMask,		XK_Left,  spawn,	   {.v = voldown } },
++	{ MODKEY|ShiftMask,		XK_Down,  spawn,	   {.v = volmute } },
+ 	TAGKEYS(                        XK_1,                      0)
+ 	TAGKEYS(                        XK_2,                      1)
+ 	TAGKEYS(                        XK_3,                      2)
