@@ -1,27 +1,22 @@
-diff --git a/config.def.h b/config.def.h
-index 9efa774..b9d1458 100644
---- a/config.def.h
-+++ b/config.def.h
-@@ -60,6 +60,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn()
+--- config.def.h.orig	2025-05-31 04:38:11.169567643 +0800
++++ config.def.h	2025-05-31 04:53:07.548373090 +0800
+@@ -59,6 +59,9 @@
+ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
  static const char *termcmd[]  = { "st", NULL };
++static const char *volup[] = { "amixer", "set", "Master", "5%+", NULL};
++static const char *voldown[] = { "amixer", "set", "Master", "5%-", NULL};
++static const char *voltog[] = { "amixer", "set", "Master", "toggle", NULL};
  
-+/* sound patch */
-+static const char *volup[] = { "amixer", "set", "Master", "5%+", NULL };                                                                                                                      
-+static const char *voldown[] = { "amixer", "set", "Master", "5%-", NULL };                                                                                                                    
-+static const char *volmute[] = { "amixer"f, "set", "Master", "toggle", NULL };
-+
-+/* keybinds */
  static const Key keys[] = {
  	/* modifier                     key        function        argument */
- 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-@@ -85,6 +91,9 @@ static const Key keys[] = {
+@@ -85,6 +88,9 @@
  	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
  	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 +	{ MODKEY|ShiftMask,		XK_Right,  spawn,	   {.v = volup } },
-+	{ MODKEY|ShiftMask,		XK_Left,  spawn,	   {.v = voldown } },
-+	{ MODKEY|ShiftMask,		XK_Down,  spawn,	   {.v = volmute } },
++	{ MODKEY|ShiftMask,		XK_Left,   spawn,	   {.v = voldown } },
++	{ MODKEY|ShiftMask,		XK_Down,   spawn,	   {.v = voltog } },
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
