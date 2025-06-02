@@ -62,8 +62,8 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *volup[] = { "amixer", "set", "Master", "5%+", NULL};
 static const char *voldown[] = { "amixer", "set", "Master", "5%-", NULL};
 static const char *voltog[] = { "amixer", "set", "Master", "toggle", NULL};
-static const char *flamegui[] = { "flame_gui.sh", NULL };
-static const char *flamescreen[] = { "flame_screen.sh", NULL };
+static const char *locksleep[] = { "/home/lumin/Coding/scripts/suspend.sh", NULL};
+static const char *flamegui[] = { "flame_gui.sh", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -93,8 +93,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Right,  spawn,	   {.v = volup } },
 	{ MODKEY|ShiftMask,		XK_Left,   spawn,	   {.v = voldown } },
 	{ MODKEY|ShiftMask,		XK_Down,   spawn,	   {.v = voltog } },
-	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = flamegui} },
-	{ MODKEY|ShiftMask,		XK_o,	   spawn,	   {.v = flamescreen} },
+	{ MODKEY|ShiftMask,	        XK_s,      spawn,	   {.v = locksleep } },
+	{ MODKEY|ShiftMask,	        XK_p,      spawn,	   {.v = flamegui } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
